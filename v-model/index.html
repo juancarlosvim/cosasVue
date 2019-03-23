@@ -10,15 +10,18 @@
 <body>
 <div id="app">
     <h1>{{titulo}}</h1>
-    <input type="text" v-model="nuevaFruta">
+    <input type="text" v-model="nuevaFruta" @keyup.enter="agregarFruta">
     <button v-on:click="agregarFruta">Agregar Fruta</button>
     <ul>
         <!-- Bucle for-->
-        <li v-for="fruta of frutas">{{fruta.nombre}} | {{fruta.cantidad}}
+        <li v-for="fruta of frutas">{{fruta.nombre}} 
+            <input type="number" v-model.number="fruta.cantidad">
             <span v-if="fruta.cantidad === 0">NO HAY</span>
+            <button @click="fruta.cantidad++">+</button>
         </li>
 
     </ul>
+    <h4>TOTAL: {{sumarFrutas}}</h4>
 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
